@@ -29,7 +29,7 @@ To run in the development mode with hot module reloading:
 npm start
 ```
 
-That command opens `http://localhost:5173` page in your browser.
+That command opens http://localhost:5173 page in your browser.
 
 
 To create a production build:
