@@ -21,5 +21,8 @@ export default ({mode}) => {
         IMAGES: path.resolve(__dirname, './src/assets/images'),
       },
     },
+    server: {
+      open: true,
+    },
   });
 };
