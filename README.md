@@ -7,8 +7,7 @@ Usage: create fast prototypes, solve test tasks.
 * Babel is used for Typescript transpilation. Typescript compiler is used for the type checking only.
 * ESLint for linting Typescript and Javascript code.
 * Auto code formatting with Prettier.
-* Fully controllable build process with Webpack. There are the development, production configs. The common part is in the common config.
-* Webpack dev server with hot reloading
+* Dev server with hot reloading
 * Production optimized build
 * Client-side routing
 * Material UI toolkit
