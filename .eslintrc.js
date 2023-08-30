@@ -15,7 +15,6 @@ module.exports = {
     'plugin:promise/recommended',
     'plugin:unicorn/recommended',
     'prettier',
-    'plugin:storybook/recommended',
   ],
   plugins: [
     '@typescript-eslint',
