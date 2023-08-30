@@ -1,4 +1,4 @@
-# React.js Typescript application starter
+# React.js Typescript application starter which uses Vite
 
 Usage: create fast prototypes, solve test tasks.
 
@@ -9,11 +9,11 @@ Usage: create fast prototypes, solve test tasks.
 * Auto code formatting with Prettier.
 * Dev server with hot reloading
 * Production optimized build
-* Client-side routing
-* Material UI toolkit
-* ApiService for working with a backend. Axios is used.
-* Login and Main page skeletons.
-* Jest configured. Tests can be written in Typescript.
+* Client-side routing (react-router v6)
+* Material UI toolkit (v5)
+* "api" sub-dir contains code for working with a backend. Axios is used.
+* Login and Main page skeletons. Dummy implementation for handling the authentication has already been added.
+* Jest already configured. Tests can be written in Typescript.
 
 ## Quick start
 
@@ -29,7 +29,7 @@ To run in the development mode with hot module reloading:
 npm start
 ```
 
-That command opens `http://localhost:4000` page in your browser.
+That command opens `http://localhost:5173` page in your browser.
 
 
 To create a production build:
@@ -37,4 +37,4 @@ To create a production build:
 ```sh
 npm run build
 ```
-See "build" folder for results.
+See "dist" folder for results.
