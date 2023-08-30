@@ -1,18 +1,19 @@
-﻿import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import * as path from "path";
+﻿import * as path from 'path';
+import {defineConfig} from 'vite';
+import react from '@vitejs/plugin-react';
+import eslint from 'vite-plugin-eslint';
 
-export default ({ mode }) => {
+export default ({mode}) => {
   return defineConfig({
-    plugins: [react()],
+    plugins: [react(), eslint({fix: true})],
     define: {
-      "process.env.NODE_ENV": `"${mode}"`,
+      'process.env.NODE_ENV': `"${mode}"`,
     },
     resolve: {
       alias: {
-        'src': path.resolve(__dirname, './src'),
-        'IMAGES': path.resolve(__dirname, './src/assets/images')
+        src: path.resolve(__dirname, './src'),
+        IMAGES: path.resolve(__dirname, './src/assets/images'),
       },
     },
-  })
-}
+  });
+};
