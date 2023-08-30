@@ -15,11 +15,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
-    "paths": {
-      "IMAGES/*": [
-        "src/assets/images/*"
-      ]
-    },
+
     /* Additional Checks */
     // Eslint already checks this
 //    "noUnusedLocals": true,                      /* Report errors on unused locals. */
