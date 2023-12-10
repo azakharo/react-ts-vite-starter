@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 import eslint from 'vite-plugin-eslint';
 
-export default ({mode}) => {
+export default () => {
   return defineConfig({
     plugins: [
       react(),
@@ -12,9 +12,6 @@ export default ({mode}) => {
       svgr({svgrOptions: {icon: true}}),
       eslint({fix: true}),
     ],
-    define: {
-      'process.env.NODE_ENV': `"${mode}"`,
-    },
     resolve: {
       alias: {
         src: path.resolve(__dirname, './src'),
@@ -23,6 +20,7 @@ export default ({mode}) => {
     },
     server: {
       open: true,
+      port: 4000,
     },
   });
 };
