@@ -5,7 +5,7 @@ import {getUsers} from 'src/api/users';
 import useAuth from 'src/hooks/useAuth';
 import User from 'src/types/users/User';
 import errorImg from 'IMAGES/error-page-icon.png';
-import {ReactComponent as ViteIcon} from 'IMAGES/vite.svg';
+import ViteIcon from 'IMAGES/vite.svg?react';
 
 const areaColor = '#e2deed';
 
