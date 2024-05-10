@@ -66,7 +66,7 @@ const Main = () => {
             height: '2rem',
             marginRight: 'auto',
           }}
-          src={errorImg as string}
+          src={errorImg}
           alt="logo"
         />
         {username && (
