@@ -5,6 +5,7 @@ import {createTheme, ThemeProvider} from '@mui/material/styles';
 import AppGlobalStyles from 'src/AppGlobalStyles';
 import AppRoutes from 'src/AppRoutes';
 import {AuthProvider} from 'src/contexts/AuthContext';
+import {isProduction} from 'src/utils/env';
 
 const theme = createTheme();
 
@@ -18,7 +19,7 @@ const App = () => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   useEffect(() => {
-    if (import.meta.env.PROD) {
+    if (isProduction) {
       window.addEventListener(vitePreloadErrorEvent, vitePreloadErrorHandler);
 
       return () => {
