@@ -1,3 +1,5 @@
+import {describe, expect, test} from 'vitest';
+
 import {getNameInitials} from './strings';
 
 describe('Test getNameInitials()', () => {
