@@ -45,7 +45,6 @@
     "prettier": "2.8.1",
     "typescript": "5.7.2",
     "vite": "5.2.11",
-    "vite-plugin-eslint": "1.8.1",
     "vitest": "2.1.8"
   },
   "engines": {
