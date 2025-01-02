@@ -2,8 +2,8 @@ import {memo, useEffect} from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 
-import AppGlobalStyles from './GlobalStyles';
-import AppRoutes from '@/app/Routes';
+import GlobalStyles from './GlobalStyles';
+import Routes from '@/app/Routes';
 import {AuthProvider} from '@/features/auth';
 import {isProduction} from '@/shared/utils';
 
@@ -35,8 +35,8 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <AuthProvider>
-          <AppGlobalStyles />
-          <AppRoutes />
+          <GlobalStyles />
+          <Routes />
         </AuthProvider>
       </BrowserRouter>
     </ThemeProvider>
