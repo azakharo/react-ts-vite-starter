@@ -1,9 +1,9 @@
 import {memo, useEffect, useState} from 'react';
 import {Box, Button} from '@mui/material';
 
-import {getUsers} from '@/api/users';
+import {getUsers} from '@entities/user';
 import {useAuth} from '@/features/auth';
-import User from '@/types/users/User';
+import {User} from '@entities/user';
 import errorImg from '@images/sad-cloud.png';
 
 const areaColor = '#e2deed';

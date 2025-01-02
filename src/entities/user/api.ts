@@ -1,5 +1,5 @@
 import {axi} from '@shared/api';
-import User from '@/types/users/User';
+import {User} from './types';
 
 export const getUsers = async (): Promise<User[]> => {
   const response = await axi.get('/api/users/');
