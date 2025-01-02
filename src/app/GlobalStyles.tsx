@@ -1,8 +1,8 @@
-import GlobalStyles from '@mui/material/GlobalStyles';
+import MuiGlobalStyles from '@mui/material/GlobalStyles';
 
-const AppGlobalStyles = (): JSX.Element => {
+const GlobalStyles = (): JSX.Element => {
   return (
-    <GlobalStyles
+    <MuiGlobalStyles
       styles={{
         '*': {
           boxSizing: 'border-box',
@@ -29,4 +29,4 @@ const AppGlobalStyles = (): JSX.Element => {
   );
 };
 
-export default AppGlobalStyles;
+export default GlobalStyles;

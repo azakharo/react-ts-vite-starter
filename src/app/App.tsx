@@ -2,8 +2,8 @@ import {memo, useEffect} from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 
-import AppGlobalStyles from 'src/AppGlobalStyles';
-import AppRoutes from 'src/AppRoutes';
+import AppGlobalStyles from './GlobalStyles';
+import AppRoutes from 'src/app/Routes';
 import {AuthProvider} from 'src/contexts/AuthContext';
 import {isProduction} from 'src/utils/env';
 
