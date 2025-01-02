@@ -18,7 +18,7 @@ import {
   remUserId as remUserIdFromLocalStorage,
   setAuthToken as putAuthTokenToLocalStorage,
   setUserId as putUserIdToLocalStorage,
-} from '@/helpers/localStorage';
+} from '@/shared/helpers';
 import UserLoggedIn from '@/types/UserLoggedIn';
 
 export interface AuthState {
