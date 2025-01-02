@@ -15,7 +15,10 @@ export default () => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
-        IMAGES: path.resolve(__dirname, './src/assets/images'),
+        '@shared': path.resolve(__dirname, './src/shared'),
+        '@entities': path.resolve(__dirname, './src/entities'),
+        '@widgets': path.resolve(__dirname, './src/widgets'),
+        '@images': path.resolve(__dirname, './src/assets/images'),
       },
     },
     server: {

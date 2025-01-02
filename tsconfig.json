@@ -17,6 +17,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
+      "@shared/*": ["src/shared/*"],
+      "@entities/*": ["src/entities/*"],
+      "@widgets/*": ["src/widgets/*"],
+      "@images/*": ["src/assets/images/*"]
     },
 
     /* Additional Checks */
