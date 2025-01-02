@@ -4,7 +4,7 @@ import {Box, Button} from '@mui/material';
 import {getUsers} from 'src/api/users';
 import useAuth from 'src/hooks/useAuth';
 import User from 'src/types/users/User';
-import errorImg from 'IMAGES/error-page-icon.png';
+import errorImg from 'IMAGES/sad-cloud.png';
 
 const areaColor = '#e2deed';
 
