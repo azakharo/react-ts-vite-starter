@@ -10,7 +10,7 @@ import {
 import {useLocation, useNavigate} from 'react-router-dom';
 
 import {init as apiInit, login as apiLogin, uninit as apiUninit} from '@/api';
-import {ROUTE__LOGIN, ROUTE__MAIN} from '@/constants/routes';
+import {ROUTE__LOGIN, ROUTE__MAIN} from '@/shared/constants';
 import {
   getAuthToken as getAuthTokenFromLocalStorage,
   getUserId as getUserIdFromLocalStorage,
