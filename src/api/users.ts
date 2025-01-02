@@ -1,6 +1,6 @@
-import {axi} from 'src/api/axiosSetup';
-import {BASE_URL} from 'src/api/config';
-import User from 'src/types/users/User';
+import {axi} from '@/api/axiosSetup';
+import {BASE_URL} from '@/api/config';
+import User from '@/types/users/User';
 
 export const getUsers = async (): Promise<User[]> => {
   const response = await axi.get(`${BASE_URL}/api/users/`);

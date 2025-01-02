@@ -14,7 +14,7 @@ export default () => {
     ],
     resolve: {
       alias: {
-        src: path.resolve(__dirname, './src'),
+        '@': path.resolve(__dirname, './src'),
         IMAGES: path.resolve(__dirname, './src/assets/images'),
       },
     },

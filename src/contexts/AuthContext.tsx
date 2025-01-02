@@ -9,8 +9,8 @@ import {
 } from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 
-import {init as apiInit, login as apiLogin, uninit as apiUninit} from 'src/api';
-import {ROUTE__LOGIN, ROUTE__MAIN} from 'src/constants/routes';
+import {init as apiInit, login as apiLogin, uninit as apiUninit} from '@/api';
+import {ROUTE__LOGIN, ROUTE__MAIN} from '@/constants/routes';
 import {
   getAuthToken as getAuthTokenFromLocalStorage,
   getUserId as getUserIdFromLocalStorage,
@@ -18,8 +18,8 @@ import {
   remUserId as remUserIdFromLocalStorage,
   setAuthToken as putAuthTokenToLocalStorage,
   setUserId as putUserIdToLocalStorage,
-} from 'src/helpers/localStorage';
-import UserLoggedIn from 'src/types/UserLoggedIn';
+} from '@/helpers/localStorage';
+import UserLoggedIn from '@/types/UserLoggedIn';
 
 export interface AuthState {
   isAuthenticated: boolean;

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-import {axi} from 'src/api/axiosSetup';
-import {BASE_URL} from 'src/api/config';
+import {axi} from '@/api/axiosSetup';
+import {BASE_URL} from '@/api/config';
 
 export const login = async (
   username: string,

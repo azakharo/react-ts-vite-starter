@@ -2,7 +2,7 @@ import {memo, useCallback, useState} from 'react';
 import {Box, Button, FormHelperText, Typography} from '@mui/material';
 import * as Yup from 'yup';
 
-import useAuth from 'src/hooks/useAuth';
+import useAuth from '@/hooks/useAuth';
 import {InferType} from 'yup';
 import {FormProvider, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
