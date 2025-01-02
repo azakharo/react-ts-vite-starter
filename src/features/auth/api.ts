@@ -1,7 +1,5 @@
+import {axi} from '@shared/api';
 import axios from 'axios';
-
-import {axi} from '@/api/axiosSetup';
-import {BASE_URL} from '@/api/config';
 
 export const login = async (
   username: string,
@@ -13,7 +11,7 @@ export const login = async (
     // For successful login use:
     // "username": "eve.holt@reqres.in",
     // "password": "cityslicka"
-    response = await axi.post(`${BASE_URL}/api/login`, {
+    response = await axi.post('/api/login', {
       email: username,
       password,
     });

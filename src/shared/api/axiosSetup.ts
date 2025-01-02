@@ -1,6 +1,6 @@
 import axios, {isAxiosError} from 'axios';
 
-import {ROUTE__LOGIN, ROUTE__MAIN} from "@/shared/constants";
+import {ROUTE__LOGIN, ROUTE__MAIN} from "../constants";
 
 const redirectToLogin = (): void => {
   const { pathname, search } = window.location;

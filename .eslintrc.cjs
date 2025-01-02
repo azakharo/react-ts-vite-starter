@@ -177,8 +177,6 @@ module.exports = {
                 '^\\./(?=.*/)(?!/?$)',
                 '^\\.(?!/?$)',
                 '^\\./?$',
-                // Images
-                '^(IMAGES)(/.*|$)',
               ],
               // Side effect imports.
               ['^\\u0000'],
