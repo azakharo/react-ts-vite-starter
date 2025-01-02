@@ -1,19 +1,19 @@
 # React.js Typescript application starter which uses Vite
 
-Usage: create fast prototypes, solve test tasks.
+Usage: create fast prototypes, solve test tasks or start a new project.
 
 ## Features:
 * You can write Typescript or Javascript code with the latest JS features.
-* Babel is used for Typescript transpilation. Typescript compiler is used for the type checking only.
-* ESLint for linting Typescript and Javascript code.
+* ESLint configured using airbnb's config
 * Auto code formatting with Prettier.
-* Dev server with hot reloading
+* Dev server with hot module reloading (HMR)
 * Production optimized build
 * Client-side routing (react-router v6)
-* Material UI toolkit (v5)
-* "api" sub-dir contains code for working with a backend. Axios is used.
+* Material UI toolkit (mui v5)
+* axios
 * Login and Main page skeletons. Dummy implementation for handling the authentication has already been added.
-* Jest already configured. Tests can be written in Typescript.
+* vitest
+* FSD folders (shared, entities, features, widgets, etc). Aliases configured. 
 
 ## Quick start
 
@@ -38,3 +38,15 @@ To create a production build:
 npm run build
 ```
 See "dist" folder for results.
+
+To run the production build:
+
+```sh
+npm run preview
+```
+
+To run the tests:
+
+```sh
+npm test
+```
