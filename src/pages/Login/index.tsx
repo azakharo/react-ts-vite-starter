@@ -2,11 +2,13 @@ import {memo, useCallback, useState} from 'react';
 import {Box, Button, FormHelperText, Typography} from '@mui/material';
 import * as Yup from 'yup';
 
-import useAuth from '@/hooks/useAuth';
+import {useAuth} from '@/features/auth';
 import {InferType} from 'yup';
 import {FormProvider, useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {TextFieldElement} from 'react-hook-form-mui';
+import {useNavigate, useSearchParams} from 'react-router-dom';
+import {ROUTE__MAIN} from '@/shared/constants';
 
 const v8nSchema = Yup.object().shape({
   username: Yup.string().required('required'),
@@ -16,6 +18,8 @@ const v8nSchema = Yup.object().shape({
 type FormValues = InferType<typeof v8nSchema>;
 
 const Login = () => {
+  const [urlParams] = useSearchParams();
+  const navigate = useNavigate();
   const {login} = useAuth();
   const [authError, setAuthError] = useState('');
 
@@ -35,7 +39,12 @@ const Login = () => {
         await login(username, password);
       } catch (e) {
         setAuthError((e as Error).message);
+        return;
       }
+
+      const url = urlParams.get('redirect') ?? ROUTE__MAIN;
+
+      navigate(url);
     },
     [login],
   );

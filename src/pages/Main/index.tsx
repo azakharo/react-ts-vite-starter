@@ -2,7 +2,7 @@ import {memo, useEffect, useState} from 'react';
 import {Box, Button} from '@mui/material';
 
 import {getUsers} from '@/api/users';
-import useAuth from '@/hooks/useAuth';
+import {useAuth} from '@/features/auth';
 import User from '@/types/users/User';
 import errorImg from 'IMAGES/sad-cloud.png';
 

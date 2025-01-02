@@ -1,4 +1,3 @@
-export {login, logout} from './auth';
 export {
   createCancelToken,
   init,

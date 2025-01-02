@@ -1,16 +1,14 @@
 import {
   createContext,
-  FC,
-  ReactNode,
+  FC, PropsWithChildren,
   useCallback,
   useEffect,
   useMemo,
   useReducer,
 } from 'react';
-import {useLocation, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
-import {init as apiInit, login as apiLogin, uninit as apiUninit} from '@/api';
-import {ROUTE__LOGIN, ROUTE__MAIN} from '@/shared/constants';
+import {ROUTE__LOGIN} from '@/shared/constants';
 import {
   getAuthToken as getAuthTokenFromLocalStorage,
   getUserId as getUserIdFromLocalStorage,
@@ -19,12 +17,13 @@ import {
   setAuthToken as putAuthTokenToLocalStorage,
   setUserId as putUserIdToLocalStorage,
 } from '@/shared/helpers';
-import UserLoggedIn from '@/types/UserLoggedIn';
+import {UserSignedIn} from './types';
+import {login as loginMethod} from './api';
 
 export interface AuthState {
   isAuthenticated: boolean;
   isInitialised: boolean;
-  user: UserLoggedIn | null;
+  user: UserSignedIn | null;
 }
 
 const initialAuthState: AuthState = {
@@ -49,12 +48,12 @@ const ACTION__LOGOUT = 'ACTION__LOGOUT';
 
 interface AppInitAction {
   type: typeof ACTION__APP_INIT;
-  payload: UserLoggedIn | null;
+  payload: UserSignedIn | null;
 }
 
 interface LoginAction {
   type: typeof ACTION__LOGIN;
-  payload: UserLoggedIn;
+  payload: UserSignedIn;
 }
 
 interface LogoutAction {
@@ -109,22 +108,13 @@ const AuthContext = createContext<AuthContextType>({
   logout: () => {},
 });
 
-interface LocationState {
-  returnUrl?: string;
-}
-
-interface Props {
-  children: ReactNode;
-}
-
-export const AuthProvider: FC<Props> = ({children}) => {
+export const AuthProvider: FC<PropsWithChildren> = ({children}) => {
   const [state, dispatch] = useReducer(reducer, initialAuthState);
   const navigate = useNavigate();
-  const location = useLocation();
 
   const login = useCallback(
-    async (username: string, password: string, redirect = true) => {
-      const {id, name, token} = await apiLogin(username, password);
+    async (username: string, password: string) => {
+      const {id, name, token} = await loginMethod(username, password);
 
       setSession(token, id);
 
@@ -137,21 +127,8 @@ export const AuthProvider: FC<Props> = ({children}) => {
         type: ACTION__LOGIN,
         payload: user,
       });
-
-      if (redirect) {
-        const locationState = location.state as LocationState;
-        const returnUrl = locationState?.returnUrl;
-        navigate(
-          returnUrl && !returnUrl.endsWith(ROUTE__LOGIN)
-            ? returnUrl
-            : ROUTE__MAIN,
-          {
-            replace: true,
-          },
-        );
-      }
     },
-    [navigate, location.state],
+    [dispatch],
   );
 
   const logout = useCallback(() => {
@@ -172,64 +149,38 @@ export const AuthProvider: FC<Props> = ({children}) => {
   );
 
   useEffect(() => {
-    const initApp = () => {
-      apiInit(logout);
+    try {
+      const accessToken = getAuthTokenFromLocalStorage();
+      const userId = getUserIdFromLocalStorage();
 
-      const redirectToLogin = () => {
-        navigate(ROUTE__LOGIN, {
-          state: {
-            returnUrl: `${location.pathname}${location.search}${location.hash}`,
-          },
+      if (accessToken && userId) {
+        // TODO Request current user info - check whether auth-ed or not
+        const user = {
+          id: userId,
+          name: 'Alexey',
+        };
+
+        setSession(accessToken, userId);
+
+        dispatch({
+          type: ACTION__APP_INIT,
+          payload: user,
         });
-      };
-
-      try {
-        const accessToken = getAuthTokenFromLocalStorage();
-        const userId = getUserIdFromLocalStorage();
-
-        if (accessToken && userId) {
-          // TODO Request current user info - check whether auth-ed or not
-          const user = {
-            id: userId,
-            name: 'Alexey',
-          };
-
-          setSession(accessToken, userId);
-
-          dispatch({
-            type: ACTION__APP_INIT,
-            payload: user,
-          });
-
-          if (location.pathname === ROUTE__LOGIN) {
-            navigate(ROUTE__MAIN);
-          }
-        } else {
-          dispatch({
-            type: ACTION__APP_INIT,
-            payload: null,
-          });
-        }
-      } catch (err) {
-        /* eslint-disable-next-line no-console */
-        console.error(err);
-
-        redirectToLogin();
-
+      } else {
         dispatch({
           type: ACTION__APP_INIT,
           payload: null,
         });
       }
-    };
+    } catch (err) {
+      /* eslint-disable-next-line no-console */
+      console.error(err);
 
-    initApp();
-
-    // Call Api.uninit on unmount
-    // eslint-disable-next-line @typescript-eslint/unbound-method
-    return apiUninit;
-    // Have to run this effect only once on the app startup
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      dispatch({
+        type: ACTION__APP_INIT,
+        payload: null,
+      });
+    }
   }, []);
 
   if (!state.isInitialised) {
