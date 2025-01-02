@@ -1,36 +1,39 @@
 import {memo, useCallback, useState} from 'react';
-import {Box, Button, FormHelperText, TextField, Typography} from '@mui/material';
-import {Formik, FormikHelpers} from 'formik';
+import {Box, Button, FormHelperText, Typography} from '@mui/material';
 import * as Yup from 'yup';
 
 import useAuth from 'src/hooks/useAuth';
+import {InferType} from 'yup';
+import {FormProvider, useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {TextFieldElement} from 'react-hook-form-mui';
 
 const v8nSchema = Yup.object().shape({
-  // username: Yup.string().required('required'),
-  // password: Yup.string().required('required'),
+  username: Yup.string().required('required'),
+  password: Yup.string().required('required'),
 });
 
-interface FormValues {
-  username: string;
-  password: string;
-}
+type FormValues = InferType<typeof v8nSchema>;
 
 const Login = () => {
   const {login} = useAuth();
   const [authError, setAuthError] = useState('');
-  const initialValues: FormValues = {
-    username: '',
-    password: '',
-  };
 
-  const handleFormSubmit = useCallback(
-    async (values: FormValues, {setSubmitting}: FormikHelpers<FormValues>) => {
-      const {username, password} = values;
+  const form = useForm({
+    mode: 'onBlur',
+    resolver: yupResolver(v8nSchema),
+    defaultValues: {
+      username: '',
+      password: '',
+    },
+  });
+  const { control, handleSubmit, formState: {isSubmitting} } = form;
 
+  const onSubmit = useCallback(
+    async ({username, password}: FormValues) => {
       try {
         await login(username, password);
       } catch (e) {
-        setSubmitting(false);
         setAuthError((e as Error).message);
       }
     },
@@ -38,12 +41,7 @@ const Login = () => {
   );
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={v8nSchema}
-      onSubmit={handleFormSubmit}
-    >
-      {({handleSubmit, isSubmitting}) => (
+    <FormProvider {...form} >
         <Box
           sx={{
             height: '100vh',
@@ -60,15 +58,15 @@ const Login = () => {
             }}
             component="form"
             noValidate
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <Typography variant="h4" color="textPrimary">
               Welcome to the test
             </Typography>
 
-            <TextField label="Username" name="username" />
+            <TextFieldElement label="Username" name="username" control={control} />
 
-            <TextField label="Password" name="password" type="password" />
+            <TextFieldElement label="Password" name="password" type="password" control={control} />
 
             {authError && <FormHelperText error>{authError}</FormHelperText>}
 
@@ -94,8 +92,7 @@ const Login = () => {
             </Typography>
           </Box>
         </Box>
-      )}
-    </Formik>
+    </FormProvider>
   );
 };
 
