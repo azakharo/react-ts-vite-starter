@@ -5,7 +5,7 @@ import {createTheme, ThemeProvider} from '@mui/material/styles';
 import AppGlobalStyles from './GlobalStyles';
 import AppRoutes from '@/app/Routes';
 import {AuthProvider} from '@/contexts/AuthContext';
-import {isProduction} from '@/utils/env';
+import {isProduction} from '@/shared/utils';
 
 const theme = createTheme();
 
