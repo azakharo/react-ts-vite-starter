@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 
 import {useAuth} from '@/features/auth';
 import {InferType} from 'yup';
-import {FormProvider, useForm} from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {TextFieldElement} from 'react-hook-form-mui';
 import {useNavigate, useSearchParams} from 'react-router-dom';
@@ -31,7 +31,7 @@ const Login = () => {
       password: '',
     },
   });
-  const { control, handleSubmit, formState: {isSubmitting} } = form;
+  const {control, handleSubmit, formState: {isSubmitting}} = form;
 
   const onSubmit = useCallback(
     async ({username, password}: FormValues) => {
@@ -50,58 +50,56 @@ const Login = () => {
   );
 
   return (
-    <FormProvider {...form} >
-        <Box
-          sx={{
-            height: '100vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 2,
-            }}
-            component="form"
-            noValidate
-            onSubmit={handleSubmit(onSubmit)}
+    <Box
+      sx={{
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+        }}
+        component="form"
+        noValidate
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <Typography variant="h4" color="textPrimary">
+          Welcome to the test
+        </Typography>
+
+        <TextFieldElement label="Username" name="username" control={control} />
+
+        <TextFieldElement label="Password" name="password" type="password" control={control} />
+
+        {authError && <FormHelperText error>{authError}</FormHelperText>}
+
+        <Box pt={2}>
+          <Button
+            color="secondary"
+            disabled={isSubmitting}
+            size="large"
+            type="submit"
+            variant="contained"
           >
-            <Typography variant="h4" color="textPrimary">
-              Welcome to the test
-            </Typography>
-
-            <TextFieldElement label="Username" name="username" control={control} />
-
-            <TextFieldElement label="Password" name="password" type="password" control={control} />
-
-            {authError && <FormHelperText error>{authError}</FormHelperText>}
-
-            <Box pt={2}>
-              <Button
-                color="secondary"
-                disabled={isSubmitting}
-                size="large"
-                type="submit"
-                variant="contained"
-              >
-                Login
-              </Button>
-            </Box>
-
-            <Typography
-              align="center"
-              variant="subtitle2"
-              color="textSecondary"
-            >
-              For login use &quot;eve.holt@reqres.in&quot; username with any
-              password
-            </Typography>
-          </Box>
+            Login
+          </Button>
         </Box>
-    </FormProvider>
+
+        <Typography
+          align="center"
+          variant="subtitle2"
+          color="textSecondary"
+        >
+          For login use &quot;eve.holt@reqres.in&quot; username with any
+          password
+        </Typography>
+      </Box>
+    </Box>
   );
 };
 
