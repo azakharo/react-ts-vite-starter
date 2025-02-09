@@ -1,9 +1,9 @@
 import axios, {isAxiosError} from 'axios';
 
-import {ROUTE__LOGIN, ROUTE__MAIN} from "../constants";
+import {ROUTE__LOGIN, ROUTE__MAIN} from '../constants';
 
 const redirectToLogin = (): void => {
-  const { pathname, search } = window.location;
+  const {pathname, search} = window.location;
 
   if (pathname === ROUTE__LOGIN) {
     return;
@@ -17,12 +17,10 @@ export const axi = axios.create({
 });
 
 axi.interceptors.response.use(
-  (response) => response,
+  response => response,
   (error: unknown) => {
-    if (isAxiosError(error)) {
-      if (error.response?.status === 401) {
-        redirectToLogin();
-      }
+    if (isAxiosError(error) && error.response?.status === 401) {
+      redirectToLogin();
     }
 
     return Promise.reject(error);

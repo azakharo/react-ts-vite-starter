@@ -1,5 +1,6 @@
-import {axi} from '@shared/api';
 import axios from 'axios';
+
+import {axi} from '@shared/api';
 
 export const login = async (
   username: string,

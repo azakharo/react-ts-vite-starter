@@ -1,13 +1,13 @@
 import {memo, useCallback, useState} from 'react';
-import {Box, Button, FormHelperText, Typography} from '@mui/material';
-import * as Yup from 'yup';
-
-import {useAuth} from '@/features/auth';
-import {InferType} from 'yup';
 import {useForm} from 'react-hook-form';
-import {yupResolver} from '@hookform/resolvers/yup';
 import {TextFieldElement} from 'react-hook-form-mui';
 import {useNavigate, useSearchParams} from 'react-router-dom';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {Box, Button, FormHelperText, Typography} from '@mui/material';
+import * as Yup from 'yup';
+import {InferType} from 'yup';
+
+import {useAuth} from '@/features/auth';
 import {ROUTE__MAIN} from '@/shared/constants';
 
 const v8nSchema = Yup.object().shape({
@@ -31,7 +31,11 @@ const Login = () => {
       password: '',
     },
   });
-  const {control, handleSubmit, formState: {isSubmitting}} = form;
+  const {
+    control,
+    handleSubmit,
+    formState: {isSubmitting},
+  } = form;
 
   const onSubmit = useCallback(
     async ({username, password}: FormValues) => {
@@ -74,7 +78,12 @@ const Login = () => {
 
         <TextFieldElement label="Username" name="username" control={control} />
 
-        <TextFieldElement label="Password" name="password" type="password" control={control} />
+        <TextFieldElement
+          label="Password"
+          name="password"
+          type="password"
+          control={control}
+        />
 
         {authError && <FormHelperText error>{authError}</FormHelperText>}
 
@@ -90,11 +99,7 @@ const Login = () => {
           </Button>
         </Box>
 
-        <Typography
-          align="center"
-          variant="subtitle2"
-          color="textSecondary"
-        >
+        <Typography align="center" variant="subtitle2" color="textSecondary">
           For login use &quot;eve.holt@reqres.in&quot; username with any
           password
         </Typography>

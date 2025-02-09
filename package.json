@@ -6,7 +6,9 @@
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "lint": "eslint .",
+    "ts": "tsc --noEmit"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",

@@ -1,12 +1,16 @@
 import {
   createContext,
-  FC, PropsWithChildren,
+  FC,
+  PropsWithChildren,
   useCallback,
   useEffect,
   useMemo,
   useReducer,
 } from 'react';
 import {useNavigate} from 'react-router-dom';
+
+import {login as loginMethod} from './api';
+import {UserSignedIn} from './types';
 
 import {ROUTE__LOGIN} from '@/shared/constants';
 import {
@@ -17,8 +21,6 @@ import {
   setAuthToken as putAuthTokenToLocalStorage,
   setUserId as putUserIdToLocalStorage,
 } from '@/shared/helpers';
-import {UserSignedIn} from './types';
-import {login as loginMethod} from './api';
 
 export interface AuthState {
   isAuthenticated: boolean;

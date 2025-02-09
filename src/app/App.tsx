@@ -3,6 +3,7 @@ import {BrowserRouter} from 'react-router-dom';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 
 import GlobalStyles from './GlobalStyles';
+
 import Routes from '@/app/Routes';
 import {AuthProvider} from '@/features/auth';
 import {isProduction} from '@/shared/utils';
