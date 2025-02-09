@@ -50,7 +50,7 @@ const Login = () => {
 
       navigate(url);
     },
-    [login],
+    [login, navigate, urlParams],
   );
 
   return (
@@ -70,7 +70,11 @@ const Login = () => {
         }}
         component="form"
         noValidate
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={event => {
+          const returnedFunc = handleSubmit(onSubmit);
+
+          void returnedFunc(event);
+        }}
       >
         <Typography variant="h4" color="textPrimary">
           Welcome to the test
