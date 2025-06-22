@@ -16,6 +16,11 @@ export const axi = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
 });
 
+axi.interceptors.request.use(function (config) {
+  config.headers['x-api-key'] = 'reqres-free-v1';
+  return config;
+});
+
 axi.interceptors.response.use(
   response => response,
   (error: unknown) => {
