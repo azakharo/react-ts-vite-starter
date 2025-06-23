@@ -13,7 +13,7 @@
   "dependencies": {
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.0",
-    "@hookform/resolvers": "3.9.1",
+    "@hookform/resolvers": "5.1.1",
     "@mui/icons-material": "6.4.12",
     "@mui/material": "6.4.12",
     "axios": "1.10.0",
@@ -48,8 +48,8 @@
     "eslint-plugin-unicorn": "45.0.2",
     "prettier": "3.6.0",
     "typescript": "5.2.2",
-    "vite": "5.4.11",
-    "vitest": "2.1.8"
+    "vite": "6.3.5",
+    "vitest": "3.2.4"
   },
   "engines": {
     "npm": ">=8.19.2 <11.0.0",
