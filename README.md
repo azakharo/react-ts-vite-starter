@@ -9,7 +9,7 @@ Usage: create fast prototypes, solve test tasks or start a new project.
 * Dev server with hot module reloading (HMR)
 * Production optimized build
 * Client-side routing (react-router v6)
-* Material UI toolkit (mui v5)
+* Material UI toolkit (mui v6)
 * axios
 * Login and Main page skeletons. Dummy implementation for handling the authentication has already been added.
 * vitest
