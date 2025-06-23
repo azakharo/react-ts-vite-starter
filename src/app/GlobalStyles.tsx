@@ -1,6 +1,6 @@
 import MuiGlobalStyles from '@mui/material/GlobalStyles';
 
-const GlobalStyles = (): JSX.Element => {
+const GlobalStyles = () => {
   return (
     <MuiGlobalStyles
       styles={{
